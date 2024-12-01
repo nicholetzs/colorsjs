@@ -49,9 +49,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const posicaoAlfabeto = primeiraLetra.charCodeAt(0) - 'a'.charCodeAt(0) + 1;
         
         return `
-          Dica 1: A primeira letra da cor é "${primeiraLetra.toUpperCase()}". 
-          Dica 2: A última letra da cor é "${ultimaLetra.toUpperCase()}". 
-          Dica 3: A posição da primeira letra no alfabeto é ${posicaoAlfabeto}.`;
+        Dica 1: Primeira letra: "${primeiraLetra.toUpperCase()}".\n
+        Dica 2: Última letra: "${ultimaLetra.toUpperCase()}".\n
+        Dica 3: Posição da primeira letra no alfabeto é ${posicaoAlfabeto}.
+      `;      
       }      
       
   
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
           feedbackEl.textContent = `Você acertou! A cor era ${corSecreta}.`;
           document.body.style.backgroundColor = corSecreta;
         } else {
-          feedbackEl.textContent = `Dica: ${gerarDica(corSecreta)}`;
+          feedbackEl.textContent = `${gerarDica(corSecreta)}`;
         }
       });
     });

@@ -130,14 +130,16 @@
   <div class="moon" style="top: 10%; left: 85%;"></div>
   <div class="satellite" style="top: 40%; left: 50%;"></div>
 
-  <!-- Container do jogo (Se quiser saber )-->
   <div class="game-container bg-gradient-to-br from-indigo-900 to-black p-8 rounded-xl text-center shadow-2xl">
     <h1 class="text-3xl font-extrabold text-indigo-300 mb-6 tracking-widest">Jogo de Adivinhação</h1>
     <p class="mb-4 text-indigo-200">Clique em uma das cores e ilumine o cosmos!</p>
-    <p id="target-color" class="mb-4 text-sm text-indigo-200" style="display: none;">Cor secreta: <span class="font-bold display-none text-yellow-400"></span></p>
+    <p id="target-color" class="mb-4 text-sm text-indigo-200">Cor secreta: <span class="font-bold text-yellow-400"></span></p>
     <div id="color-options" class="grid grid-cols-5 gap-2 mb-4"></div>
-    <p id="feedback" class="mt-6 font-medium text-indigo-300"></p>
   </div>
+  
+  <!-- Feedback com Tailwind CSS -->
+  <p id="feedback" class="mt-6 font-medium text-indigo-300 text-center whitespace-pre-wrap break-words"></p>
+  
 
   <script src="script.js"></script>
 </body>
