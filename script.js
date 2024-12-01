@@ -39,17 +39,20 @@ document.addEventListener("DOMContentLoaded", function() {
     function gerarDica(cor) {
         const nomeCor = cor.toLowerCase();
         
-        // Usar o Set para garantir letras únicas
-        const letrasUnicas = [...new Set(nomeCor)].slice(0, 3);
+        // Dica 1: Primeira letra do nome da cor
+        const primeiraLetra = nomeCor[0];
         
-        // Se houver pelo menos 3 letras únicas, usar
-        if (letrasUnicas.length < 3) {
-          return `A cor tem menos de 3 letras únicas. As letras disponíveis são: ${letrasUnicas.join(", ")}.`;
-        }
-      
-        // Caso contrário, dá as 3 primeiras letras únicas mesmo
-        return `Aqui estão 3 letras únicas da cor: ${letrasUnicas.join(", ")}.`;
-      }
+        // Dica 2: Última letra do nome da cor
+        const ultimaLetra = nomeCor[nomeCor.length - 1];
+        
+        // Dica 3: Posição da primeira letra no alfabeto (A = 1, B = 2, ..., Z = 26)
+        const posicaoAlfabeto = primeiraLetra.charCodeAt(0) - 'a'.charCodeAt(0) + 1;
+        
+        return `
+          Dica 1: A primeira letra da cor é "${primeiraLetra.toUpperCase()}". 
+          Dica 2: A última letra da cor é "${ultimaLetra.toUpperCase()}". 
+          Dica 3: A posição da primeira letra no alfabeto é ${posicaoAlfabeto}.`;
+      }      
       
   
     // Exibir as opções de cores
