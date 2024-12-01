@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação de Cores</title>
+  <!-- Usando o CDN do Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: black;
+      background-attachment: fixed;
+      overflow: hidden;
+    }
+
+    .stars, .planet, .meteor, .satellite, .moon {
+      position: absolute;
+    }
+
+    /* Meu papel de parede de estrelas modificado */
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      animation: floating 4s infinite ease-in-out alternate;
+    }
+
+    
+    .meteor {
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(45deg, white, rgba(255, 255, 255, 0));
+      border-radius: 50%;
+      animation: meteor-fall 6s infinite linear;
+    }
+
+    @keyframes meteor-fall {
+      0% { transform: translate(-100px, -100px); opacity: 1; }
+      100% { transform: translate(400px, 400px); opacity: 0; }
+    }
+
+    
+    .moon {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #e0e0e0, #bbb);
+      border-radius: 50%;
+      box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.2);
+    }
+
+    
+    .satellite {
+      width: 20px;
+      height: 10px;
+      background: silver;
+      transform: rotate(45deg);
+      animation: satellite-orbit 10s infinite linear;
+    }
+
+    @keyframes satellite-orbit {
+      0% { transform: rotate(45deg) translate(-100px, -50px); }
+      100% { transform: rotate(45deg) translate(100px, 50px); }
+    }
+
+    /* Planetas */
+    .planet {
+      border-radius: 50%;
+    }
+    .planet-1 {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ff5733, #c70039);
+      top: 20%;
+      left: 15%;
+      animation: floating 6s infinite ease-in-out alternate;
+    }
+    .planet-2 {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #f39c12, #d35400);
+      top: 60%;
+      left: 70%;
+      animation: floating 8s infinite ease-in-out alternate;
+    }
+    .planet-2:before {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px dashed #fff3;
+      border-radius: 50%;
+      top: -10px;
+      left: -10px;
+      animation: orbit-spin 10s infinite linear;
+    }
+    .planet-3 {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, #3498db, #2c3e50);
+      top: 80%;
+      left: 30%;
+      animation: floating 5s infinite ease-in-out alternate;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(-5px); }
+      100% { transform: translateY(5px); }
+    }
+
+    @keyframes orbit-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="relative text-white h-screen flex justify-center items-center">
+  <!-- Fundo com os elemntos criados -->
+  <div class="stars" style="top: 10%; left: 25%; animation-delay: 0.2s;"></div>
+  <div class="stars" style="top: 50%; left: 75%; animation-delay: 0.5s;"></div>
+  <div class="stars" style="top: 85%; left: 40%; animation-delay: 1s;"></div>
+  <div class="stars" style="top: 25%; left: 65%; animation-delay: 1.5s;"></div>
+  <div class="stars" style="top: 70%; left: 20%; animation-delay: 2s;"></div>
+  <div class="meteor" style="top: 5%; left: 10%;"></div>
+  <div class="meteor" style="top: 30%; left: 70%;"></div>
+  <div class="meteor" style="top: 80%; left: 50%;"></div>
+  <div class="planet planet-1"></div>
+  <div class="planet planet-2"></div>
+  <div class="planet planet-3"></div>
+  <div class="moon" style="top: 10%; left: 85%;"></div>
+  <div class="satellite" style="top: 40%; left: 50%;"></div>
+
+  <!-- Container do jogo (Se quiser saber )-->
+  <div class="game-container bg-gradient-to-br from-indigo-900 to-black p-8 rounded-xl text-center shadow-2xl">
+    <h1 class="text-3xl font-extrabold text-indigo-300 mb-6 tracking-widest">Jogo de Adivinhação</h1>
+    <p class="mb-4 text-indigo-200">Clique em uma das cores e ilumine o cosmos!</p>
+    <p id="target-color" class="mb-4 text-sm text-indigo-200" style="display: none;">Cor secreta: <span class="font-bold display-none text-yellow-400"></span></p>
+    <div id="color-options" class="grid grid-cols-5 gap-2 mb-4"></div>
+    <p id="feedback" class="mt-6 font-medium text-indigo-300"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
